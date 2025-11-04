@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const express = require('express');
 const authRoutes = require('./routes/authRoutes')
 const aiRoutes = require("./routes/aiRoutes")
+const mapRoutes = require("./routes/mapRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 
 const connectDB = require("./config/db")
 
@@ -24,6 +26,8 @@ app.get('/', (req, res) => {
 
 app.use("/api/auth", authRoutes)
 app.use("/api/ai/", aiRoutes)
+app.use("/api/maps", mapRoutes)
+app.use("/api/payments", paymentRoutes)
 
 // start the server
 const port = 5001 || process.env.PORT

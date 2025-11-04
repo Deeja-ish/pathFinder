@@ -11,6 +11,39 @@ const model = genAI.getGenerativeModel({
     },
 });
 
+const textModel = genAI.getGenerativeModel({
+    model: 'gemini-2.5-flash',
+    generationConfig: {
+        maxOutputTokens: 800,
+    },
+});
+
+const fetchTopicExplanation = async (topic) => {
+  const prompt = `
+    You are an expert educator. Provide a comprehensive, beginner-friendly explanation 
+    for the topic: "${topic}".
+    
+    Structure the explanation clearly. You can use paragraphs and bullet points,
+    but do NOT use markdown headings (like '#') or bolding.
+    
+    Start with a simple definition, then cover the main components or key ideas
+    related to the topic. Aim for 2-3 paragraphs.
+  `;
+  
+  try {
+    console.log('Sending text prompt to Gemini...');
+    const result = await textModel.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log('Received text explanation from Gemini.');
+    return text;
+  } catch (error) {
+    console.error('Error fetching text explanation from Gemini:', error);
+    throw new Error('Failed to generate AI explanation.');
+  }
+};
+
+
 // the prompt 
 const generatePrompt = (topic) => {
     return `
@@ -61,4 +94,4 @@ const fetchMindMapData = async (topic) => {
     }
 };
 
-module.exports = { fetchMindMapData };
+module.exports = { fetchMindMapData, fetchTopicExplanation };

@@ -1,4 +1,4 @@
-const { fetchMindMapData } = require("../services/aiService")
+const { fetchMindMapData, fetchTopicExplanation } = require("../services/aiService")
 
 
 const generateMindMap = async (req, res) => {
@@ -13,9 +13,12 @@ const generateMindMap = async (req, res) => {
 
   // --- AI LOGIC WILL GO HERE ---
   try {
-    const mapData = await fetchMindMapData(topic);
+    const [mapData, explanation] = await Promise.all([
+      fetchMindMapData(topic),
+      fetchTopicExplanation(topic)
+    ]);
 
-    res.status(200).json(mapData)
+    res.status(200).json({ mapData, explanation });
   } catch (error) {
     console.error(error);
     res.status(500).json({message: error.message || "Server error during map generation."})
