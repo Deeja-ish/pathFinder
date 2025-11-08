@@ -9,7 +9,7 @@ This project is deployed with a modern stack:
 
 ### 🟢 Live Demo Links
 
-  * **Frontend (Vercel):** `https://path-finder-blush.vercel.app`
+  * **Frontend (Vercel):** `https://path-finder-blush.vercel.app/`
   * **Backend (Render):** `https://pathfinder-291l.onrender.com`
 
 -----
