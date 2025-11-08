@@ -122,7 +122,7 @@ const DashboardPage = () => {
     setExplanation('');
     try {
       const { data } = await axios.post(
-        'http://localhost:5001/api/ai/generate-map',
+        `${import.meta.env.VITE_API_URL}/api/ai/generate-map`,
         { topic },
         getAuthHeader()
       );
@@ -146,7 +146,7 @@ const DashboardPage = () => {
     try {
       const mapData = { nodes, edges };
       const { data: savedMap } = await axios.post(
-        'http://localhost:5001/api/maps',
+        `${import.meta.env.VITE_API_URL}/api/maps`,
         { topic, mapData, explanation },
         getAuthHeader()
       );
@@ -166,7 +166,7 @@ const DashboardPage = () => {
     setIsSidebarOpen(false); //  Close sidebar on navigation
     try {
       const { data } = await axios.get(
-        `http://localhost:5001/api/maps/${mapId}`,
+        `${import.meta.env.VITE_API_URL}/api/maps/${mapId}`,
         getAuthHeader()
       );
       setTopic(data.topic);
@@ -189,7 +189,7 @@ const DashboardPage = () => {
     }
     try {
       await axios.delete(
-        `http://localhost:5001/api/maps/${mapId}`,
+        `${import.meta.env.VITE_API_URL}/api/maps/${mapId}`,
         getAuthHeader()
       );
       if (currentMapId === mapId) {
@@ -208,7 +208,7 @@ const DashboardPage = () => {
     try {
       // 1. Call backend to get payment URL
       const { data } = await axios.post(
-        'http://localhost:5001/api/payments/initialize',
+        `${import.meta.env.VITE_API_URL}/api/payments/initialize`,
         {}, // Empty body, email is from token
         getAuthHeader()
       );
