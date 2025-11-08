@@ -1,16 +1,30 @@
+// {
+//   "compilerOptions": {
+//     "baseUrl": ".", 
+//     "paths": {
+//       "@/*": ["./src/*"] 
+//     },
+//     "types": ["vite/client"],
+//     "target": "es6",
+//     "module": "commonjs",
+//     "moduleResolution": "node",
+//     "jsx": "react",
+//     "checkJs": true,
+//     "resolveJsonModule": true,
+//     "esModuleInterop": true
+//   },
+//   "include": ["src/**/*"],
+//   "exclude": ["node_modules"]
+// }
+
 {
   "compilerOptions": {
-    "baseUrl": ".", 
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"] 
     },
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "checkJs": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "types": ["vite/client"],
+    "jsx": "react"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

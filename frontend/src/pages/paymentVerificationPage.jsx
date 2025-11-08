@@ -24,7 +24,7 @@ const PaymentVerificationPage = () => {
       try {
         // Call our backend to verify
         const { data } = await axios.get(
-          `http://localhost:5001/api/payments/verify?reference=${reference}`,
+          `${import.meta.env.VITE_API_URL}/api/payments/verify?reference=${reference}`,
           getAuthHeader()
         );
 

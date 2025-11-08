@@ -79,7 +79,7 @@ const DashboardPage = () => {
   const fetchMyMaps = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        'http://localhost:5001/api/maps/my-maps',
+        `${import.meta.env.VITE_API_URL}/api/maps/my-maps`,
         getAuthHeader()
       );
       setSavedMaps(data);
